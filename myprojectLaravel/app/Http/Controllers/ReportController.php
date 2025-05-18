@@ -16,7 +16,7 @@ class ReportController extends Controller
 
         return view('reports.reservation_report', ['data' => $data]);
     }
-
+    
     // Table Usage
     public function tableUtilizationReport()
     {

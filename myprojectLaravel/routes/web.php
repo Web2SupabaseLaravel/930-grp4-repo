@@ -4,13 +4,13 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReportController;
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.reports.test'); // عرض صفحة الفورم التي أنشأتها
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 // Routes for ReportController
@@ -21,5 +21,10 @@ Route::prefix('reports')->group(function () {
     Route::get('/cancellations', [ReportController::class, 'cancellationReport'])->name('reports.cancellations');
     Route::get('/user-count', [ReportController::class, 'userCount'])->name('reports.userCount'); // For user count
 });
+
+Route::get('/reports/test', function () {
+    return view('admin.reports.test');
+})->name('reports.test');
+
 
 require __DIR__.'/auth.php';
