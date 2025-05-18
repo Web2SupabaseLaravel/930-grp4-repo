@@ -8,5 +8,44 @@
 </head>
 <body>
     <h1>hi welcome to the site </h1>
+    <div>
+        @if (session()-> has('success'))
+        <div>
+            {{session('success')}}
+        </div>
+        @endif
+    </div>
+    <div>
+        <table border="1">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th> name</th>
+                <th>email</th>
+                <th>password</th>
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
+            @foreach ($customers as $customer )
+            <tr>
+                <td> {{$customer-> ID}}</td>
+                <td> {{$customer-> name}}</td>
+                <td> {{$customer-> email}}</td>
+                <td> {{$customer-> password}}</td>
+                <td>
+                    <a href="{{route('customer.edit' , ['customer' =>$customer ])}}">edit</a>
+                </td>
+                <td>
+                    <form method="post" action="{{route('customer.delete' ,['customer' => $customer] )}}">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="delete"/>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
 </body>
 </html>

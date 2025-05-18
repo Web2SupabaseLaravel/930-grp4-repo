@@ -18,16 +18,16 @@
         
         @endif
     </div>
-    <form method="post" action="{{route('customer.store')}}">
+    <form method="post" action="{{route('customer.update' , ['customer' => $customer])}}">
         @csrf
-        @method('post')
+        @method('put')
         <div>
             <label >name</label>
-            <input type="text" name="name" placeholder="name">
+            <input type="text" name="name" placeholder="name" value="{{$customer->name}}">
         </div>
          <div>
             <label >email</label>
-            <input type="text" name="email" placeholder="email">
+            <input type="text" name="email" placeholder="email" value="{{$customer->email}}">
         </div>
          <div>
             <input type="submit" value="save the data">

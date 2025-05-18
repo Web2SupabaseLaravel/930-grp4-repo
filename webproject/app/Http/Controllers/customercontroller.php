@@ -8,7 +8,9 @@ class customercontroller extends Controller
 {
 
     public function index(){
-        return view("customer.index");
+        $customers = customermangemant::all();
+        return view('customer.index', ['customers'=>$customers]);
+        
     }
     public function create(){
         return view("customer.create");
@@ -20,5 +22,22 @@ class customercontroller extends Controller
         ]);
         $newcustomermangemant = customermangemant::create($data);
         return redirect(route('customer.index'));
+    }
+    public function edit(customermangemant $customer){
+        return view('customer.edit', ['customer'=>$customer]);
+    }
+    public function update(Request $request,customermangemant $customer){
+         $data = $request->validate([
+            "name"=> "required",
+            "email"=> "required",
+        ]);
+        $customer->update($data);
+        return redirect(route("customer.index"))-> with("success","customer update succsesfully");
+
+    }
+    public function delete(customermangemant $customer){
+        $customer->delete();
+        return redirect(route("customer.index"))->with("success","customer succesfully deleted");
+        
     }
 }
