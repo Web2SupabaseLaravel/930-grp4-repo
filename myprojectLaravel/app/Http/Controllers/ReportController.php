@@ -14,48 +14,48 @@ class ReportController extends Controller
             ->orderBy('date', 'desc')
             ->get();
 
-        return response()->json($data); 
+        return view('reports.reservation_report', ['data' => $data]);
     }
 
     // Table Usage
     public function tableUtilizationReport()
     {
         $data = DB::table('tables')
-            ->select('id', 'status') 
+            ->select('id', 'status')
             ->get();
 
-        return response()->json($data);
+        return view('reports.table_utilization_report', ['data' => $data]);
     }
 
     // Customer Statistics
     public function customerDemographicsReport()
     {
         $data = DB::table('users')
-            ->select(DB::raw('COUNT(*) as total'), 'role') 
+            ->select(DB::raw('COUNT(*) as total'), 'role')
             ->groupBy('role')
             ->get();
 
-        return response()->json($data);
+        return view('reports.customer_demographics_report', ['data' => $data]);
     }
 
-    //Cancellations
+    // Cancellations
     public function cancellationReport()
     {
         $data = DB::table('reservations')
             ->select(DB::raw('COUNT(*) as total'), DB::raw('DATE(reservation_time) as date'))
-            ->where('status', 'canceled') 
+            ->where('status', 'canceled')
             ->groupBy('date')
             ->orderBy('date', 'desc')
             ->get();
 
-        return response()->json($data);
+        return view('reports.cancellation_report', ['data' => $data]);
     }
 
-   // Number of Users
-
+    // Number of Users
     public function userCount()
     {
         $userCount = DB::table('users')->count();
-        return response()->json(['total_users' => $userCount]);
+
+        return view('reports.user_count', ['total_users' => $userCount]);
     }
 }
