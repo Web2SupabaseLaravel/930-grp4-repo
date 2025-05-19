@@ -21,16 +21,14 @@ class ReservationController extends Controller
             $query->where('date', $request->date);
         }
 
-        // فلترة حسب الحالة
         if ($request->filled('status')) {
             $query->where('status', $request->status);
         }
-
-        // فلترة حسب عدد الأشخاص
         if ($request->filled('party_size')) {
             $query->where('party_size', $request->party_size);
         }
 
+        // جلب النتائج بعد الفلترة
         $reservations = $query->get();
 
         // عرض قائمة الحجوزات
@@ -154,8 +152,10 @@ public function store(Request $request)
         $reservation->delete();
 
         return redirect()->route('reservations.index')
-                         ->with('success', 'Reservation deleted successfully!');
     }
 
-    
+        $reservation->delete();
+
+        return redirect()->route('reservations.index')->with('success', 'Reservation deleted successfully!');
+    }
 }

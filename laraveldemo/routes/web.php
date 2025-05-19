@@ -9,7 +9,6 @@ Route::view('dashboard', 'dashboard')->name('dashboard');
 Route::view('profile', 'profile')->name('profile');
 
 
-
 // عرض صفحة إنشاء حجز جديد
 Route::get('reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
 
