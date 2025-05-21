@@ -3,12 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\NotificationController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 Route::get('/', function () {
-    return view('admin.reports.test'); // عرض صفحة الفورم التي أنشأتها
+    return view('admin.reports.test'); 
 });
 
 
@@ -26,5 +27,8 @@ Route::get('/reports/test', function () {
     return view('admin.reports.test');
 })->name('reports.test');
 
+
+//Routes for ReportController
+Route::resource('notifications', NotificationController::class);
 
 require __DIR__.'/auth.php';
