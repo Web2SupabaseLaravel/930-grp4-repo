@@ -51,7 +51,7 @@ class ReservationController extends Controller
         $validated = $request->validate([
             'date' => 'required|date',
             'duration' => 'required|string',
-            'party_size' => 'required|integer|min:1',
+            'party_size' => 'required|integer',
             'location' => 'required|string',
             'cuisine' => 'required|string',
             'time' => 'required|string',
