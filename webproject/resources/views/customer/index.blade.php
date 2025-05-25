@@ -23,16 +23,19 @@
                 </th>
                 <th> name</th>
                 <th>email</th>
-                <th>password</th>
+                <th>phone_number</th>
+                <th>special_requests</th>
                 <th>edit</th>
                 <th>delete</th>
+                
             </tr>
             @foreach ($customers as $customer )
             <tr>
                 <td> {{$customer-> ID}}</td>
                 <td> {{$customer-> name}}</td>
                 <td> {{$customer-> email}}</td>
-                <td> {{$customer-> password}}</td>
+                <td> {{$customer-> phone_number}}</td>
+                <td>{{$customer-> special_requests }}</td>
                 <td>
                     <a href="{{route('customer.edit' , ['customer' =>$customer ])}}">edit</a>
                 </td>
@@ -46,6 +49,7 @@
             </tr>
             @endforeach
         </table>
+         <a href="/CustomerMangemant/create"><button> create </button><a>
     </div>
 </body>
 </html>

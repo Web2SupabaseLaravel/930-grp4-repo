@@ -19,6 +19,8 @@ class customercontroller extends Controller
         $data = $request->validate([
             "name"=> "required",
             "email"=> "required",
+            "phone_number"=> "required",
+            "special_requests"=> "required"
         ]);
         $newcustomermangemant = customermangemant::create($data);
         return redirect(route('customer.index'));
@@ -30,6 +32,8 @@ class customercontroller extends Controller
          $data = $request->validate([
             "name"=> "required",
             "email"=> "required",
+             "phone_number"=> "required",
+             "special_requests"=> "required"
         ]);
         $customer->update($data);
         return redirect(route("customer.index"))-> with("success","customer update succsesfully");

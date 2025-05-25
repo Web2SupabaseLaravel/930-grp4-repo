@@ -30,6 +30,14 @@
             <input type="text" name="email" placeholder="email">
         </div>
          <div>
+            <label >phone_number</label>
+            <input type="text" name="phone_number" placeholder="phone_number">
+        </div>
+        <div>
+            <label >special_requests</label>
+            <input type="text" name="special_requests" placeholder="special_requests">
+        </div>
+         <div>
             <input type="submit" value="save the data">
          </div>
     </form>
