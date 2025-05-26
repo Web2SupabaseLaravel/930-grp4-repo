@@ -30,8 +30,8 @@
     <label>Capacity:</label>
     <input type="number" name="capacity"><br>
     
-    <!-- <label>Manager_id:</label> -->
-    <!-- <input type="text" name="manager_id" > -->
+    <label>Manager_id:</label>
+    <input type="text" name="manager_id" >
 
 
     <button type="submit">Create</button>

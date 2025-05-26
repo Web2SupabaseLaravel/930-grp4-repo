@@ -25,6 +25,7 @@ class RestaurantController extends Controller
             'phonenumber' => 'required|string',
             'opening_hours' => 'nullable|string',
             'capacity' => 'nullable|integer',
+            'manager_id' => 'required|exists:users,id',
         ]);
 
         $restaurant = Restaurant::create($validated);

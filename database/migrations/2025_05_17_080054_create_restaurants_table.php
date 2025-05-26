@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('opening_hours')->nullable();
             $table->integer('capacity')->nullable();
             $table->string('phonenumber');
-            // $table->uuid('manager_id');
-            // $table->foreign('manager_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('manager_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

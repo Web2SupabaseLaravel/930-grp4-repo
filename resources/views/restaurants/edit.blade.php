@@ -22,8 +22,8 @@
     <label>Capacity:</label>
     <input type="number" name="capacity" value="{{ $restaurant->capacity }}" required><br>
 
-    <!-- <label>Manager ID:</label> -->
-    <!-- <input type="text" name="manager_id" value="{{ $restaurant->manager_id }}" required><br> -->
+    <label>Manager ID:</label>
+    <input type="text" name="manager_id" value="{{ $restaurant->manager_id }}" required><br>
 
     <button type="submit">Update</button>
 </form>
