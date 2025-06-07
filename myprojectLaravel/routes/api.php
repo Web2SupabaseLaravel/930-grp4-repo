@@ -15,15 +15,29 @@ use App\Http\Controllers\NotificationController;
 |
 */
 
-// ReportController
+// ReportController Routes
 Route::prefix('reports')->group(function () {
-     Route::get('/reservations', [ReportController::class, 'reservationReport'])->name('api.reports.reservations'); 
-     Route::get('/table-utilization', [ReportController::class, 'tableUtilizationReport'])->name('api.reports.tableUtilization'); 
-     Route::get('/customer-demographics', [ReportController::class, 'customerDemographicsReport'])->name('api.reports.customerDemographics');
-     Route::get('/cancellations', [ReportController::class, 'cancellationReport'])->name('api.reports.cancellations'); 
-     Route::get('/user-count', [ReportController::class, 'userCount'])->name('api.reports.userCount');
-     Route::get('/reports/reservations', [ReportController::class, 'reservationReport']);
+    // Individual count endpoints
+    Route::get('/users', [ReportController::class, 'getUserCount'])->name('api.reports.users');
+    Route::get('/restaurants', [ReportController::class, 'getRestaurantCount'])->name('api.reports.restaurants');
+    Route::get('/reservations', [ReportController::class, 'getReservationCount'])->name('api.reports.reservations');
+    Route::get('/tables', [ReportController::class, 'getTableCount'])->name('api.reports.tables');
+    
+    // Detailed report endpoints
+    Route::get('/reservation-report', [ReportController::class, 'getReservationReport'])->name('api.reports.reservationReport');
+    Route::get('/table-utilization', [ReportController::class, 'getTableUtilizationReport'])->name('api.reports.tableUtilization');
+    Route::get('/customer-demographics', [ReportController::class, 'getCustomerDemographics'])->name('api.reports.customerDemographics');
+    Route::get('/cancellations', [ReportController::class, 'getCancellationReport'])->name('api.reports.cancellations');
+    
+    // Legacy endpoints for backward compatibility
+    Route::get('/user-count', [ReportController::class, 'getUserCount'])->name('api.reports.userCount');
+    
+    // Combined dashboard data endpoint
+    Route::get('/dashboard', [ReportController::class, 'getDashboardData'])->name('api.reports.dashboard');
 });
+
 
 // Notifications
 Route::apiResource('notifications', NotificationController::class);
+// // Debug endpoint
+Route::get('/debug/database', [ReportController::class, 'debugDatabase']);
