@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hi welcome to the site </h1>
+    <div>
+        @if (session()-> has('success'))
+        <div>
+            {{session('success')}}
+        </div>
+        @endif
+    </div>
+    <div>
+        <table border="1">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th> name</th>
+                <th>email</th>
+                <th>phone_number</th>
+                <th>special_requests</th>
+                <th>edit</th>
+                <th>delete</th>
+                
+            </tr>
+            @foreach ($customers as $customer )
+            <tr>
+                <td> {{$customer-> ID}}</td>
+                <td> {{$customer-> name}}</td>
+                <td> {{$customer-> email}}</td>
+                <td> {{$customer-> phone_number}}</td>
+                <td>{{$customer-> special_requests }}</td>
+                <td>
+                    <a href="{{route('customer.edit' , ['customer' =>$customer ])}}">edit</a>
+                </td>
+                <td>
+                    <form method="post" action="{{route('customer.delete' ,['customer' => $customer] )}}">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="delete"/>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+         <a href="/CustomerMangemant/create"><button> create </button><a>
+    </div>
+</body>
+</html>
