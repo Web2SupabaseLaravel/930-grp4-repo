@@ -18,38 +18,31 @@
     <div>
         <table border="1">
             <tr>
-                <th>
-                    ID
-                </th>
-                <th> name</th>
-                <th>email</th>
-                <th>phone_number</th>
-                <th>special_requests</th>
-                <th>edit</th>
-                <th>delete</th>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Duration</th>
+                <th>Party Size</th>
+                <th>Location</th>
+                <th>Cuisine</th>
                 
             </tr>
-            @foreach ($customers as $customer )
+            @foreach ($reservations as $reservation )
             <tr>
-                <td> {{$customer-> ID}}</td>
-                <td> {{$customer-> name}}</td>
-                <td> {{$customer-> email}}</td>
-                <td> {{$customer-> phone_number}}</td>
-                <td>{{$customer-> special_requests }}</td>
-                <td>
-                    <a href="{{route('customer.edit' , ['customer' =>$customer ])}}">edit</a>
-                </td>
-                <td>
-                    <form method="post" action="{{route('customer.delete' ,['customer' => $customer] )}}">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" value="delete"/>
+                <td>{{ $reservation->id }}</td>
+                    <td>{{ $reservation->date }}</td>
+                    <td>{{ $reservation->time }}</td>
+                    <td>{{ $reservation->duration }}</td>
+                    <td>{{ $reservation->party_size }}</td>
+                    <td>{{ $reservation->location }}</td>
+                    <td>{{ $reservation->cuisine }}</td>
+                    <td>
                     </form>
                 </td>
             </tr>
             @endforeach
         </table>
-         <a href="/CustomerMangemant/create"><button> create </button><a>
+         {{-- <a href="/CustomerMangemant/create"><button> create </button><a> --}}
     </div>
 </body>
 </html>

@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 use App\Models\customermangemant;
 use Illuminate\Http\Request;
-
+use App\Models\Reservation;
 class customercontroller extends Controller
 {
 
     public function index(){
         $customers = customermangemant::all();
-        return view('customer.index', ['customers'=>$customers]);
+    $reservations = Reservation::all(); 
+
+    return view('customer.index', [
+        'customers' => $customers,
+        'reservations' => $reservations, // Pass it to the view
+    ]);
         
     }
     public function create(){
