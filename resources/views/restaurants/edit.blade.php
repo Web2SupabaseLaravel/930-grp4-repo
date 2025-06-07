@@ -22,6 +22,9 @@
     <label>Capacity:</label>
     <input type="number" name="capacity" value="{{ $restaurant->capacity }}" required><br>
 
+    <label>Description:</label>
+    <input type="text" name="description" value="{{ $restaurant->description }}" required><br>
+
     <label>Manager ID:</label>
     <input type="text" name="manager_id" value="{{ $restaurant->manager_id }}" required><br>
 

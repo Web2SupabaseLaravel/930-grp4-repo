@@ -37,6 +37,7 @@ class RestaurantController extends Controller
             'phonenumber' => 'required',
             'opening_hours' => 'nullable',
             'capacity' => 'nullable|integer',
+            'description' => 'nullable|string',
             'manager_id' => 'required|exists:users,id',
         ]);
        

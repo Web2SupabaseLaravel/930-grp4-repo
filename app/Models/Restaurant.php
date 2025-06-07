@@ -9,7 +9,7 @@ class Restaurant extends Model
 {
     use HasUuids;
     protected $fillable = [
-        'name', 'address', 'cuisine', 'phonenumber', 'opening_hours', 'capacity', 'manager_id'
+        'name', 'address', 'cuisine', 'phonenumber', 'opening_hours', 'capacity', 'manager_id', 'description'
     ]; 
     
     public function tables()

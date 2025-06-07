@@ -30,6 +30,9 @@
     <label>Capacity:</label>
     <input type="number" name="capacity"><br>
     
+    <label>Description:</label>
+    <input type="text" name="description"><br>
+
     <label>Manager_id:</label>
     <input type="text" name="manager_id" >
 
