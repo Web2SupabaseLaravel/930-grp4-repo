@@ -34,7 +34,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Description</th>
+                                <th>email</th>
                                 <th>Created At</th>
                                 <th width="280px">Actions</th>
                             </tr>
@@ -44,7 +44,7 @@
                             <tr>
                                 <td>{{ $item['id'] ?? 'N/A' }}</td>
                                 <td>{{ $item['name'] ?? 'N/A' }}</td>
-                                <td>{{ $item['description'] ?? 'N/A' }}</td>
+                                <td>{{ $item['email'] ?? 'N/A' }}</td>
                                 <td>{{ isset($item['created_at']) ? date('Y-m-d H:i', strtotime($item['created_at'])) : 'N/A' }}</td>
                                 <td>
                                     <form action="{{ route('items.destroy', $item['id'] ?? 0) }}" method="POST">

@@ -31,8 +31,8 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="description">Description:</label>
-                            <textarea class="form-control" name="description" id="description" rows="4" placeholder="Enter description">{{ $item['description'] }}</textarea>
+                            <label for="email">email:</label>
+                            <textarea class="form-control" name="email" id="email" rows="4" placeholder="Enter email">{{ $item['email'] }}</textarea>
                         </div>
 
                         <div class="form-group text-center">

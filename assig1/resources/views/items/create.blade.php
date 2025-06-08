@@ -30,8 +30,8 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="description">Description:</label>
-                            <textarea class="form-control" name="description" id="description" rows="4" placeholder="Enter description">{{ old('description') }}</textarea>
+                            <label for="email">email:</label>
+                            <textarea class="form-control" name="email" id="email" rows="4" placeholder="Enter email">{{ old('email') }}</textarea>
                         </div>
 
                         <div class="form-group text-center">

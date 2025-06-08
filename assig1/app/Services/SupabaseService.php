@@ -29,7 +29,6 @@ class SupabaseService
             ->withoutVerifying()
             ->get("{$this->supabaseUrl}/rest/v1/{$table}?select=*");
         
-        // Log the response for debugging
         Log::info("Supabase getAll response for {$table}:", [
             'status' => $response->status(),
             'body' => $response->body()
@@ -56,7 +55,6 @@ class SupabaseService
 
     public function create($table, $data)
     {
-        // Add timestamps if they don't exist
         if (!isset($data['created_at'])) {
             $data['created_at'] = now()->toISOString();
         }
@@ -64,7 +62,6 @@ class SupabaseService
             $data['updated_at'] = now()->toISOString();
         }
         
-        // Log the request data for debugging
         Log::info("Supabase create request for {$table}:", [
             'data' => $data
         ]);
@@ -73,7 +70,6 @@ class SupabaseService
             ->withoutVerifying()
             ->post("{$this->supabaseUrl}/rest/v1/{$table}", $data);
         
-        // Log the response for debugging
         Log::info("Supabase create response for {$table}:", [
             'status' => $response->status(),
             'body' => $response->body()
@@ -88,7 +84,6 @@ class SupabaseService
             $data['updated_at'] = now()->toISOString();
         }
         
-        // Log the request data for debugging
         Log::info("Supabase update request for {$table} id {$id}:", [
             'data' => $data
         ]);

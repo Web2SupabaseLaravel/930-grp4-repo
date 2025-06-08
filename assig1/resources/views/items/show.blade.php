@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h3>Item Details</h3>
+                    <h3>Users Details</h3>
                 </div>
 
                 <div class="card-body">
@@ -21,8 +21,8 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <strong>Description:</strong>
-                        {{ $item['description'] }}
+                        <strong>email:</strong>
+                        {{ $item['email'] }}
                     </div>
 
                     <div class="form-group text-center">

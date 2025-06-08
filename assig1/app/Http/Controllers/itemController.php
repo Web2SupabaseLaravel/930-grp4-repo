@@ -10,16 +10,14 @@ use Illuminate\Support\Facades\Validator;
 class ItemController extends Controller
 {
     protected $supabaseService;
-    protected $table = 'items'; // Change this to your table name
+    protected $table = 'items'; 
 
     public function __construct(SupabaseService $supabaseService)
     {
         $this->supabaseService = $supabaseService;
     }
 
-    /**
-     * Display a listing of the resource.
-     */
+  
     public function index()
     {
         try {
@@ -35,24 +33,19 @@ class ItemController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+  
     public function create()
     {
         return view('items.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+  
     public function store(Request $request)
     {
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
-                'description' => 'required|string',
-                // Add more validation rules as needed
+                'email' => 'required|string',
             ]);
 
             if ($validator->fails()) {
@@ -61,19 +54,15 @@ class ItemController extends Controller
                     ->withInput();
             }
 
-            // Prepare data for Supabase
-            $data = $request->only(['name', 'description']);
+            $data = $request->only(['name', 'email']);
             
-            // Add timestamps
             $data['created_at'] = now()->toISOString();
             $data['updated_at'] = now()->toISOString();
             
-            // Log data being sent
             Log::info('Creating item with data:', $data);
             
             $result = $this->supabaseService->create($this->table, $data);
             
-            // Check if we got a valid response
             if (empty($result)) {
                 Log::warning('Empty result from Supabase create operation');
                 return redirect()->route('items.index')
@@ -92,9 +81,7 @@ class ItemController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
+   
     public function show(string $id)
     {
         try {
@@ -113,9 +100,7 @@ class ItemController extends Controller
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+  
     public function edit(string $id)
     {
         try {
@@ -134,16 +119,13 @@ class ItemController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+  
     public function update(Request $request, string $id)
     {
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required|string|max:255',
-                'description' => 'required|string',
-                // Add more validation rules as needed
+                'email' => 'required|string',
             ]);
 
             if ($validator->fails()) {
@@ -152,15 +134,12 @@ class ItemController extends Controller
                     ->withInput();
             }
 
-            // Prepare data for Supabase
-            $data = $request->only(['name', 'description']);
+            $data = $request->only(['name', 'email']);
             
-            // Add updated_at timestamp
             $data['updated_at'] = now()->toISOString();
             
             $result = $this->supabaseService->update($this->table, $id, $data);
             
-            // Check if we got a valid response
             if (empty($result)) {
                 Log::warning('Empty result from Supabase update operation');
                 return redirect()->route('items.index')
@@ -177,9 +156,7 @@ class ItemController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+ 
     public function destroy(string $id)
     {
         try {
