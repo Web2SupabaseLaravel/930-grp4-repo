@@ -78,4 +78,27 @@ class ReservationApiController extends Controller
 
         return response()->json(['message' => 'Reservation deleted successfully']);
     }
+    public function search(Request $request)
+{
+    $restaurants = Restaurant::query()
+        ->when($request->filled('location'), function ($query) use ($request) {
+            $query->where('location', 'like', '%' . $request->location . '%');
+        })
+        ->when($request->filled('cuisine'), function ($query) use ($request) {
+            $query->where('cuisine', 'like', '%' . $request->cuisine . '%');
+        })
+        ->get()
+        ->filter(function ($restaurant) use ($request) {
+            $reservedSeats = $restaurant->reservations()
+                ->where('date', $request->date)
+                ->where('time', $request->time)
+                ->sum('party_size');
+
+            return ($restaurant->capacity - $reservedSeats) >= $request->party_size;
+        })
+        ->values();
+
+    return response()->json($restaurants);
+}
+
 }
