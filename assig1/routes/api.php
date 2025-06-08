@@ -2,6 +2,14 @@
 
 use App\Http\Controllers\API\ApiController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
+Route::options('/{any}', function (Request $request) {
+    return response('', 204)
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+})->where('any', '.*');
 
 /*
 |--------------------------------------------------------------------------
