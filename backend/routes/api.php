@@ -3,30 +3,17 @@
 use App\Http\Controllers\API\ApiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
+//Marah Api
 Route::options('/{any}', function (Request $request) {
     return response('', 204)
         ->header('Access-Control-Allow-Origin', '*')
         ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
         ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 })->where('any', '.*');
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-// User API routes
 Route::post('/register', [ApiController::class, 'register']);
 Route::get('/users', [ApiController::class, 'getUsers']);
 Route::get('/users/{id}', [ApiController::class, 'getUser']);
@@ -37,3 +24,4 @@ Route::post('/login', [ApiController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     Route::get('/profile', [ApiController::class, 'profile']);
 });
+//Marah Api
