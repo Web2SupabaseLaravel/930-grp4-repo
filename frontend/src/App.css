@@ -1,0 +1,22 @@
+.poppins{
+  font-family: "Poppins", sans-serif;
+}
+
+.sansita{
+  font-family: "Sansita Swashed", cursive;
+}
+
+.resbutton{
+  font-family: "Righteous";
+}
+
+.rescard{
+  transition: all 0.3s ease-in-out;
+}
+
+.rescard:hover{
+  transform: scale(1.03);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
