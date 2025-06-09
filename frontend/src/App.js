@@ -1,6 +1,8 @@
 import './App.css';
 import RestaurantList from './Components/Restaurant/RestaurantList';
 import RestaurantDetail from './Components/Restaurant/Restaurant';
+import RestaurantEdit from './Components/Restaurant/RestaurantEdit';
+import RestaurantAdd from './Components/Restaurant/RestaurantAdd';
 import { Routes , Route } from 'react-router';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
@@ -17,6 +19,8 @@ function App() {
           <Routes>
             <Route path="/" element={<RestaurantList />} />
             <Route path="/restaurants/:id" element={<RestaurantDetail />} />
+            <Route path="/restaurants/:id/edit" element={<RestaurantEdit />} />
+            <Route path="/restaurants/add" element={<RestaurantAdd />} />
           </Routes>
       <Footer />
     </>
