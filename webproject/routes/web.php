@@ -5,6 +5,8 @@ use App\Http\Controllers\customercontroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\API\usersapicpntroller;
+use App\Http\Controllers\API\ApiController;
+use App\Http\Controllers\NotificationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,4 +35,17 @@ Route::delete('/reservations/{id}', [ReservationController::class, 'destroy'])->
 
 
 
-Route::get('/reservations/{id}', [customercontroller::class, 'getreservationbyuserid'])->name('reservations.getreservationbycustomerid');
+Route::get('/reservations/user/{id}', [customercontroller::class, 'getreservationbyuserid'])->name('reservations.getreservationbycustomerid');
+
+Route::post('/register', [ApiController::class, 'register']);
+Route::get('/users', [ApiController::class, 'getUsers']);
+Route::get('/users/{id}', [ApiController::class, 'getUser']);
+Route::put('/users/{id}', [ApiController::class, 'updateUser']);
+Route::delete('/users/{id}', [ApiController::class, 'deleteUser']);
+Route::post('/login', [ApiController::class, 'login']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::get('/profile', [ApiController::class, 'profile']);
+});
+
+Route::get('/notifications/user/{id}', [NotificationController::class, 'getnotification'])->name('notifications.getnotificationbyid');

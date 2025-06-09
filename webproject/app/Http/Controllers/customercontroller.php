@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 use App\Models\customermangemant;
 use Illuminate\Http\Request;
 use App\Models\Reservation;
+use Illuminate\Support\Str;
 class customercontroller extends Controller
 {
 
+public function getReservationByUserId($id)
+{
+
+    $reservations = Reservation::where('reserved_by_user_id', $id)->get();
+
+    return response()->json(['reservations' => $reservations]);
+}
     public function index(){
         $customers = customermangemant::all();
     $reservations = Reservation::all(); 
