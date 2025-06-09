@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 
 
-class NotificationController extends Controller
+
+class NotificationApiController extends Controller
 {
   public function getnotification($id)
 {
     
-$notifications = Notification::where('id', $id)->get();
+    $notifications = Notification::where('id', $id)->get();
 
     return response()->json([
         'notifications' => $notifications
