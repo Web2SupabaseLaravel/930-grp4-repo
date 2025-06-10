@@ -8,6 +8,11 @@ import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
+import CustomerManagement from './Components/Customer/CustomerManagement';
+import Notifications from './Components/Customer/Notifications';
+
+
+
 import Login from './component/Login';
 import Register from './component/Register';
 // import Booking from './Components/Booking/Booking';
@@ -27,6 +32,8 @@ function App() {
             <Route path="/restaurants/:id" element={<RestaurantDetail />} />
             <Route path="/restaurants/:id/edit" element={<RestaurantEdit />} />
             <Route path="/restaurants/add" element={<RestaurantAdd />} />
+            <Route path='/customermangemant' element={<CustomerManagement/>}/>
+            <Route path='/Notifications' element={<Notifications/>}/>
           </Routes>
       <Footer />
     </>

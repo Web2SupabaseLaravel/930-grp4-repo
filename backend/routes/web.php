@@ -3,6 +3,12 @@
 use App\Http\Controllers\API\ApiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\customercontroller;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\API\usersapicpntroller;
+use App\Http\Controllers\ReservationController;
+
 //Marah Api
 Route::options('/{any}', function (Request $request) {
     return response('', 204)
@@ -63,5 +69,19 @@ Route::prefix('restaurants/{restaurant}')->group(function () {
     Route::put('/tables/{table}', [TablesController::class, 'update'])->name('tables.update');
     Route::delete('/tables/{table}', [TablesController::class, 'destroy'])->name('tables.destroy');
 });
+
+
+
+
+
+Route::get('/CustomerMangemant',[customercontroller::class, 'index'])->name('customer.index'); 
+Route::get('/CustomerMangemant/create',[customercontroller::class, 'create'])->name('customer.create'); 
+Route::post('/CustomerMangemant',[customercontroller::class, 'store'])->name('customer.store'); 
+Route::get('/CustomerMangemant/{customer}/edit',[customercontroller::class, 'edit'])->name('customer.edit'); 
+Route::put('/CustomerMangemant/{customer}/update',[customercontroller::class, 'update'])->name('customer.update');
+Route::delete('/CustomerMangemant/{customer}/delete',[customercontroller::class, 'delete'])->name('customer.delete');
+Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
+Route::get('/notifications/user/{id}', [NotificationController::class, 'getnotification'])->name('notifications.getnotificationbyid');
+
 
 require __DIR__.'/auth.php';

@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\TablesController;
-
-
+use App\Http\Controllers\Api\NotificationApiController;
+use App\Http\Controllers\API\CustomerControllerApi;
+use App\Http\Controllers\Api\ReservationApiController;
 //Marah Api
 Route::options('/{any}', function (Request $request) {
     return response('', 204)
@@ -36,3 +37,11 @@ Route::apiResource('restaurants', RestaurantController::class);
 Route::prefix('restaurants/{restaurant}')->group(function () {
     Route::apiResource('tables', TablesController::class);
 });
+
+
+
+Route::apiResource("CustomerMangemant", CustomerControllerApi::class);
+Route::apiResource('reservations', ReservationApiController::class);
+Route::apiResource('users', ApiController::class);
+Route::apiResource('Notification', NotificationApiController::class);
+
