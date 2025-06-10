@@ -6,12 +6,16 @@ import RestaurantAdd from './Components/Restaurant/RestaurantAdd';
 // import { Routes , Route } from 'react-router';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Routes, Route, Navigate } from 'react-router-dom';
 
 import CustomerManagement from './Components/Customer/CustomerManagement';
 import Notifications from './Components/Customer/Notifications';
 
-
+import RestaurantManagement from "./Components/DashBoard/reservation-management"
+import UserManagement from "./Components/DashBoard/user-management"
+import ReservationManagement from "./Components/DashBoard/restaurant-management"
+import Dashboard from './Components/DashBoard/DashBoard';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from './component/Login';
 import Register from './component/Register';
@@ -24,17 +28,21 @@ function App() {
   return (
     <>
       <Header />
-          <Routes>
-            <Route path="/restaurants" element={<RestaurantList />} />
-            <Route path="/" element={<Navigate to="/login" />} />
-            <Route path="/Login" element={<Login/>} />
-            <Route path="/Register" element={<Register/>} />
-            <Route path="/restaurants/:id" element={<RestaurantDetail />} />
-            <Route path="/restaurants/:id/edit" element={<RestaurantEdit />} />
-            <Route path="/restaurants/add" element={<RestaurantAdd />} />
-            <Route path='/customermangemant' element={<CustomerManagement/>}/>
-            <Route path='/Notifications' element={<Notifications/>}/>
-          </Routes>
+      <Routes>
+        <Route path="/restaurants" element={<RestaurantList />} />
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/restaurants/:id" element={<RestaurantDetail />} />
+        <Route path="/restaurants/:id/edit" element={<RestaurantEdit />} />
+        <Route path="/restaurants/add" element={<RestaurantAdd />} />
+        <Route path='/customermangemant' element={<CustomerManagement />} />
+        <Route path='/Notifications' element={<Notifications />} />
+        <Route path="/user-management" element={<UserManagement />} />
+        <Route path="/restaurant-management" element={<RestaurantManagement />} />
+        <Route path="/reservation-management" element={<ReservationManagement />} />
+
+      </Routes>
       <Footer />
     </>
   );

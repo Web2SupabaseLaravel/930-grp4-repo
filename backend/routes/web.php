@@ -8,6 +8,12 @@ use App\Http\Controllers\customercontroller;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\API\usersapicpntroller;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
+
+
+
+
 
 //Marah Api
 Route::options('/{any}', function (Request $request) {
@@ -19,6 +25,10 @@ Route::options('/{any}', function (Request $request) {
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/reports/test', function () {
+    return view('admin.reports.test');
+})->name('reports.test');
+
 
 Route::post('/register', [ApiController::class, 'register']);
 Route::get('/users', [ApiController::class, 'getUsers']);
@@ -83,5 +93,12 @@ Route::delete('/CustomerMangemant/{customer}/delete',[customercontroller::class,
 Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
 Route::get('/notifications/user/{id}', [NotificationController::class, 'getnotification'])->name('notifications.getnotificationbyid');
 
+Route::prefix('reports')->group(function () {
+    Route::get('/reservations', [ReportController::class, 'reservationReport'])->name('reports.reservations');
+    Route::get('/table-utilization', [ReportController::class, 'tableUtilizationReport'])->name('reports.tableUtilization');
+    Route::get('/customer-demographics', [ReportController::class, 'customerDemographicsReport'])->name('reports.customerDemographics');
+    Route::get('/cancellations', [ReportController::class, 'cancellationReport'])->name('reports.cancellations');
+    Route::get('/user-count', [ReportController::class, 'userCount'])->name('reports.userCount'); // For user count
+});
 
 require __DIR__.'/auth.php';

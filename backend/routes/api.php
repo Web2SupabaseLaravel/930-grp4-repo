@@ -8,6 +8,13 @@ use App\Http\Controllers\API\TablesController;
 use App\Http\Controllers\Api\NotificationApiController;
 use App\Http\Controllers\API\CustomerControllerApi;
 use App\Http\Controllers\Api\ReservationApiController;
+use App\Http\Controllers\ReportController;
+
+
+
+
+
+
 //Marah Api
 Route::options('/{any}', function (Request $request) {
     return response('', 204)
@@ -45,3 +52,27 @@ Route::apiResource('reservations', ReservationApiController::class);
 Route::apiResource('users', ApiController::class);
 Route::apiResource('Notification', NotificationApiController::class);
 
+
+
+
+
+Route::prefix('reports')->group(function () {
+    // Individual count endpoints
+    Route::get('/users', [ReportController::class, 'getUserCount'])->name('api.reports.users');
+    Route::get('/restaurants', [ReportController::class, 'getRestaurantCount'])->name('api.reports.restaurants');
+    Route::get('/reservations', [ReportController::class, 'getReservationCount'])->name('api.reports.reservations');
+    Route::get('/tables', [ReportController::class, 'getTableCount'])->name('api.reports.tables');
+    
+    // Detailed report endpoints
+    Route::get('/reservation-report', [ReportController::class, 'getReservationReport'])->name('api.reports.reservationReport');
+    Route::get('/table-utilization', [ReportController::class, 'getTableUtilizationReport'])->name('api.reports.tableUtilization');
+    Route::get('/customer-demographics', [ReportController::class, 'getCustomerDemographics'])->name('api.reports.customerDemographics');
+    Route::get('/cancellations', [ReportController::class, 'getCancellationReport'])->name('api.reports.cancellations');
+    
+    // Legacy endpoints for backward compatibility
+    Route::get('/user-count', [ReportController::class, 'getUserCount'])->name('api.reports.userCount');
+    
+    // Combined dashboard data endpoint
+    Route::get('/dashboard', [ReportController::class, 'getDashboardData'])->name('api.reports.dashboard');
+});
+Route::get('/debug/database', [ReportController::class, 'debugDatabase']);

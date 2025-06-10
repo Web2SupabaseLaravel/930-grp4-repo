@@ -1,0 +1,76 @@
+/* Dashboard.css */
+
+/* General layout and spacing */
+.container-fluid {
+  padding: 1.5rem;
+}
+
+/* Header styles */
+.dashboard-header {
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2d3748;
+  margin: 0;
+}
+
+/* Stats cards */
+.stats-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card-body {
+  padding: 1.5rem;
+}
+
+.stats-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.stats-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* Charts */
+.chart-container {
+  height: 300px; /* Adjust as needed */
+}
+
+/* Customer Demographics */
+.demographics-legend {
+  padding-top: 1rem;
+}
+
+.demographics-legend-item {
+  margin-bottom: 0.5rem;
+}
+
+/* Cancellations and No-Shows */
+.cancellation-rate {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Loading and Error states */
+.loading-container,
+.error-container {
+  min-height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-alert {
+  text-align: left;
+}
