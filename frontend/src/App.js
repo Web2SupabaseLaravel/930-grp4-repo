@@ -3,10 +3,13 @@ import RestaurantList from './Components/Restaurant/RestaurantList';
 import RestaurantDetail from './Components/Restaurant/Restaurant';
 import RestaurantEdit from './Components/Restaurant/RestaurantEdit';
 import RestaurantAdd from './Components/Restaurant/RestaurantAdd';
-import { Routes , Route } from 'react-router';
+// import { Routes , Route } from 'react-router';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
+import Login from './component/Login';
+import Register from './component/Register';
 // import Booking from './Components/Booking/Booking';
 // import Dashboard from './Components/DashBoard/DashBoard';
 
@@ -17,7 +20,10 @@ function App() {
     <>
       <Header />
           <Routes>
-            <Route path="/" element={<RestaurantList />} />
+            <Route path="/restaurants" element={<RestaurantList />} />
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/Login" element={<Login/>} />
+            <Route path="/Register" element={<Register/>} />
             <Route path="/restaurants/:id" element={<RestaurantDetail />} />
             <Route path="/restaurants/:id/edit" element={<RestaurantEdit />} />
             <Route path="/restaurants/add" element={<RestaurantAdd />} />
