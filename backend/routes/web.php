@@ -42,7 +42,6 @@ Route::middleware('auth:api')->group(function () {
 });
 //Marah Api
 
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\TablesController;
 
