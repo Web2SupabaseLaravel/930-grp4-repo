@@ -49,7 +49,7 @@ function RestaurantDetail() {
     );
 
     return (
-        <div className="container mt-4">
+        <div className="container mt-4 resbutton">
             <button className="btn resbutton" onClick={() => navigate('/')}>&larr; Go Back</button>
             <button className="btn btn-danger float-end resbutton" onClick={() => setShowDeletePopup(true)} >Delete</button>
             <hr />

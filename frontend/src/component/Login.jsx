@@ -33,7 +33,7 @@ const Login = () => {
         setModalMessage('✅ Login successful! Redirecting...');
 
         setTimeout(() => {
-          navigate(role === 'admin' ? '/dashboard' : '/home');
+          navigate(role === 'admin' ? '/Dashboard' : '/restaurants');
         }, 3000);
       }
     } catch (err) {
@@ -83,7 +83,7 @@ const Login = () => {
             </form>
 
             <div className="text-center mt-4">
-              <span>Don’t have an account? </span>
+              <span>Don't have an account? </span>
               <a href="/register" className="text-primary fw-semibold">Sign up</a>
             </div>
           </div>

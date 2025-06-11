@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\RestaurantController;
 use App\Http\Controllers\API\TablesController;
-use App\Http\Controllers\Api\NotificationApiController;
+use App\Http\Controllers\API\NotificationApiController;
 use App\Http\Controllers\API\CustomerControllerApi;
-use App\Http\Controllers\Api\ReservationApiController;
+use App\Http\Controllers\API\ReservationApiController;
 use App\Http\Controllers\ReportController;
 
 
@@ -49,7 +49,7 @@ Route::prefix('restaurants/{restaurant}')->group(function () {
 
 Route::apiResource("CustomerMangemant", CustomerControllerApi::class);
 Route::apiResource('reservations', ReservationApiController::class);
-Route::apiResource('users', ApiController::class);
+// Route::apiResource('users', ApiController::class);
 Route::apiResource('Notification', NotificationApiController::class);
 
 
@@ -76,3 +76,5 @@ Route::prefix('reports')->group(function () {
     Route::get('/dashboard', [ReportController::class, 'getDashboardData'])->name('api.reports.dashboard');
 });
 Route::get('/debug/database', [ReportController::class, 'debugDatabase']);
+
+

@@ -17,7 +17,7 @@ function Notifications() {
   return (
     <div className="position-relative d-inline-block " style={{width: "50%"}}>
       <i
-        className="fa-solid fa-bell fs-4"
+        className="fa-solid text-light fa-bell fs-4"
         style={{ cursor: 'pointer'}}
         onClick={() => setShowDropdown(!showDropdown)}
       ></i>

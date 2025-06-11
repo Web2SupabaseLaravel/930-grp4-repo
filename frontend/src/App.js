@@ -6,10 +6,9 @@ import RestaurantAdd from './Components/Restaurant/RestaurantAdd';
 // import { Routes , Route } from 'react-router';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
-import { BrowserRouter as Routes, Route, Navigate } from 'react-router-dom';
+import {Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 import CustomerManagement from './Components/Customer/CustomerManagement';
-import Notifications from './Components/Customer/Notifications';
 
 import RestaurantManagement from "./Components/DashBoard/reservation-management"
 import UserManagement from "./Components/DashBoard/user-management"
@@ -37,15 +36,21 @@ function App() {
         <Route path="/restaurants/:id/edit" element={<RestaurantEdit />} />
         <Route path="/restaurants/add" element={<RestaurantAdd />} />
         <Route path='/customermangemant' element={<CustomerManagement />} />
-        <Route path='/Notifications' element={<Notifications />} />
-        <Route path="/user-management" element={<UserManagement />} />
-        <Route path="/restaurant-management" element={<RestaurantManagement />} />
-        <Route path="/reservation-management" element={<ReservationManagement />} />
-
+        <Route path="/Dashboard/user-management" element={<UserManagement />} />
+        <Route path="/Dashboard/reservation-management" element={<RestaurantManagement />} />
+        <Route path="/Dashboard/restaurant-management" element={<ReservationManagement />} />
+        <Route path='/Dashboard' element={<Dashboard/>}/>
       </Routes>
       <Footer />
     </>
   );
 }
+
+
+
+
+
+
+
 
 export default App;

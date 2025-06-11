@@ -320,7 +320,7 @@ const DashBoard = () => {
         {/* Stats Cards */}
         <Row className="mb-4">
           <Col lg={3} md={6} className="mb-3">
-            <Link to="/reservation-management" className="text-decoration-none">
+            <Link to="/Dashboard/restaurant-management" className="text-decoration-none">
               <Card
                 style={{
                   border: "none",
@@ -358,7 +358,7 @@ const DashBoard = () => {
           </Col>
 
           <Col lg={3} md={6} className="mb-3">
-            <Link to="/user-management" className="text-decoration-none">
+            <Link to="/Dashboard/user-management" className="text-decoration-none">
               <Card
                 style={{
                   border: "none",
@@ -394,7 +394,7 @@ const DashBoard = () => {
           </Col>
 
           <Col lg={3} md={6} className="mb-3">
-            <Link to="/restaurant-management" className="text-decoration-none">
+            <Link to="/Dashboard/reservation-management" className="text-decoration-none">
               <Card
                 style={{
                   border: "none",

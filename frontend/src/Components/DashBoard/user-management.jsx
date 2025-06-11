@@ -45,7 +45,7 @@ const UserManagement = () => {
       let allUsers = []
 
       try {
-        const response = await apiClient.get("/CustomerManagement?per_page=1000")
+        const response = await apiClient.get("/users")
         console.log("API Response:", response.data)
 
         if (response.data.data) {
@@ -57,13 +57,13 @@ const UserManagement = () => {
         console.log("First method failed, trying alternative...")
 
         try {
-          const response = await apiClient.get("/CustomerManagement?limit=1000")
+          const response = await apiClient.get("/users?limit=1000")
           allUsers = response.data.data || response.data
         } catch (err2) {
           console.log("Second method failed, trying third...")
 
           try {
-            const response = await apiClient.get("/CustomerManagement?all=true")
+            const response = await apiClient.get("/users?all=true")
             allUsers = response.data.data || response.data
           } catch (err3) {
             console.log("Third method failed, trying pagination...")
@@ -91,7 +91,7 @@ const UserManagement = () => {
 
     while (hasMorePages) {
       try {
-        const response = await apiClient.get(`/CustomerManagement?page=${currentPage}`)
+        const response = await apiClient.get(`/users?page=${currentPage}`)
         const pageData = response.data.data || response.data
 
         if (Array.isArray(pageData) && pageData.length > 0) {
@@ -125,7 +125,7 @@ const UserManagement = () => {
         delete updateData.password_confirmation
       }
 
-      await apiClient.put(`/CustomerManagement/${selectedUser.id}`, updateData)
+      await apiClient.put(`/users/${selectedUser.id}`, updateData)
       setSuccess("User updated successfully!")
       setShowModal(false)
       resetForm()
@@ -143,7 +143,7 @@ const UserManagement = () => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       setDeleting(id)
       try {
-        await apiClient.delete(`/CustomerManagement/${id}`)
+        await apiClient.delete(`/users/${id}`)
         setSuccess("User deleted successfully!")
         fetchUsers()
       } catch (err) {
