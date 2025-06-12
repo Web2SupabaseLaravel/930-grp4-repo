@@ -17,8 +17,8 @@ const TableManagement = () => {
   const fetchData = async () => {
     try {
       const [tablesResponse, reservationsResponse] = await Promise.all([
-        axios.get('http://localhost:8000/api/tables'),
-        axios.get('http://localhost:8000/api/reservations'),
+        axios.get('http://localhost:8000/api/tabless'),
+        axios.get('http://localhost:8000/api/reservationss'),
       ]);
       if (tablesResponse.data && tablesResponse.data.length > 0) {
         setTables(tablesResponse.data);
@@ -43,7 +43,7 @@ const TableManagement = () => {
     const table = tables.find((t) => t.id === tableId);
     const newStatus = table.status === '1' ? '0' : '1'; 
     axios
-      .put(`http://localhost:8000/api/tables/${tableId}`, { status: newStatus })
+      .put(`http://localhost:8000/api/tabless/${tableId}`, { status: newStatus })
       .then(() => {
         setTables(
           tables.map((t) =>

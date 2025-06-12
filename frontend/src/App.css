@@ -271,9 +271,9 @@ body {
   }
 }
 
-.table-management {
+/* .table-management {
   margin-bottom: 20px;
-}
+} */
 
 .tables {
   display: flex;
@@ -306,7 +306,7 @@ body {
   margin-bottom: 20px;
 }
 
-table {
+/* table {
   width: 100%;
   border-collapse: collapse;
 }
@@ -320,7 +320,7 @@ th, td {
 th {
   background-color: #333;
   color: white;
-}
+} */
 
 td.confirmed {
   color: green;
@@ -334,10 +334,10 @@ td.cancelled {
   color: red;
 }
 
-select, button {
+/* select, button {
   margin: 5px;
   padding: 5px 10px;
-}
+} */
 
 
 .header {
@@ -350,13 +350,13 @@ select, button {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.header h1 {
+/* .header h1 {
   font-size: 40px;
   font-weight: 700;
   color: #FFFFFF;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
   letter-spacing: 1px;
-}
+} */
 
 .user-profile {
   display: flex;

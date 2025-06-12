@@ -16,6 +16,9 @@ function Header() {
                             <Link className="nav-link" to="/restaurants">Home</Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link" to="/tables">Tables</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link" to="/customermangemant">Customer</Link>
                         </li>
                         <li className="nav-item me-2">
