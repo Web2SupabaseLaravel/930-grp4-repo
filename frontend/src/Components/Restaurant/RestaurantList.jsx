@@ -60,11 +60,11 @@ const RestaurantList = () => {
                       </div>
                     </p>
                     <p className="card-text mb-1">
-                      <i class="bi bi-telephone-fill"></i> {restaurant.phonenumber}
+                      <i className="bi bi-telephone-fill"></i> {restaurant.phonenumber}
                     </p>
                     <p className="card-text">
                       <div>
-                        <i class="bi bi-clock-fill"></i>
+                        <i className="bi bi-clock-fill"></i>
                         <span className='text-secondary ms-2'>{restaurant.opening_hours}</span>
                       </div>
                     </p>
