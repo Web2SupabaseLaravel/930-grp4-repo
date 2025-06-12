@@ -26,6 +26,8 @@ import Register from './component/Register';
 import ReservationScheduleStaff from './Components/ReservationScheduleStaff/ReservationScheduleStaff';
 import TableManagement from './Components/Tables/TableManagement';
 
+import Booking from './components/Booking/Booking';
+import ReservationForm from './components/Booking/ReservationForm';
 
 
 
@@ -48,6 +50,8 @@ function App() {
         <Route path='/Dashboard' element={<Dashboard/>}/>
         <Route path="/reservations-schedule" element={<ReservationScheduleStaff />} />
         <Route path="/tables" element={<TableManagement />} />
+        <Route path="/reservation" element={<ReservationForm />} />
+        <Route path="/booking" element={<Booking />} />
 
 
       </Routes>
