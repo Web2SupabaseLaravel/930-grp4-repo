@@ -9,6 +9,10 @@ use App\Http\Controllers\API\NotificationApiController;
 use App\Http\Controllers\API\CustomerControllerApi;
 use App\Http\Controllers\API\ReservationApiController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\TableController;
+use App\Http\Controllers\TableManagementController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\AuthController;
 
 
 
@@ -78,3 +82,14 @@ Route::prefix('reports')->group(function () {
 Route::get('/debug/database', [ReportController::class, 'debugDatabase']);
 
 
+
+
+Route::apiResource('reservationss', ReservationController::class);
+    Route::apiResource('tabless', TableController::class);
+
+    Route::prefix('tabless')->group(function () {
+        Route::get('reservationss/{restaurantId}', [TableManagementController::class, 'viewReservationSchedule']);
+        Route::post('assign/{reservationId}', [TableManagementController::class, 'assignTable']);
+        Route::put('status/{tableId}', [TableManagementController::class, 'updateTableStatus']);
+        Route::delete('reservationss/{reservationId}', [TableManagementController::class, 'deleteReservation']);
+    });

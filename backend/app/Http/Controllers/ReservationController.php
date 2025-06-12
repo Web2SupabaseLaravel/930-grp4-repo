@@ -8,8 +8,7 @@ use Illuminate\Support\Str;
 
 class ReservationController extends Controller
 {
-   protected $defaultRestaurantId = 'fbf8569e-3b52-433e-95ac-33a04b55f336';
-
+    protected $defaultRestaurantId = 'fbf8569e-3b52-433e-95ac-33a04b55f336';
 
     public function index(Request $request)
     {
@@ -23,26 +22,11 @@ class ReservationController extends Controller
             $query->where('party_size', $request->party_size);
         }
 
-        $reservations = $query->get();
+        $reservations = $query->with('table')->get();
 
-        return view('reservations.form_reservation', [
-            'reservations' => $reservations,
-            'reservation' => new Reservation(),
-            'route' => 'reservations.store',
-            'method' => 'post',
-            'titleForm' => 'Form Input Reservation',
-            'submitButton' => 'Submit',
-        ]);
-    }
-
-    public function create()
-    {
-        return view('reservations.form_reservation', [
-            'reservation' => new Reservation(),
-            'route' => 'reservations.store',
-            'method' => 'post',
-            'titleForm' => 'Create Reservation',
-            'submitButton' => 'Submit',
+        return response()->json([
+            'status' => 'success',
+            'data' => $reservations,
         ]);
     }
 
@@ -58,62 +42,81 @@ class ReservationController extends Controller
         ]);
 
         $validated['id'] = (string) Str::uuid();
-
         $validated['restaurant_id'] = $this->defaultRestaurantId;
 
-        Reservation::create($validated);
+        $reservation = Reservation::create($validated);
 
-        return redirect()->route('reservations.index')->with('success', 'Reservation saved successfully!');
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Reservation saved successfully!',
+            'data' => $reservation,
+        ], 201);
     }
 
-    public function edit(string $id)
+    public function show(string $id)
     {
         if (!Str::isUuid($id)) {
-            abort(404);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid reservation ID',
+            ], 404);
         }
 
-        $reservation = Reservation::findOrFail($id);
+        $reservation = Reservation::with('table')->findOrFail($id);
 
-        return view('reservations.form_reservation', [
-            'reservation' => $reservation,
-            'route' => 'reservations.update',
-            'method' => 'put',
-            'titleForm' => 'Edit Reservation',
-            'submitButton' => 'Update',
+        return response()->json([
+            'status' => 'success',
+            'data' => $reservation,
         ]);
     }
 
     public function update(Request $request, string $id)
     {
         if (!Str::isUuid($id)) {
-            abort(404);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid reservation ID',
+            ], 404);
         }
 
+        // تحسين القواعد التحققية للسماح بتحديث حالة الحجز
         $validated = $request->validate([
-            'date' => 'required|date',
-            'duration' => 'required|string',
-            'party_size' => 'required|integer|min:1',
-            'location' => 'required|string',
-            'cuisine' => 'required|string',
-            'time' => 'required|string',
+            'status' => 'sometimes|in:pending,confirmed,cancelled', // 'sometimes' للسماح بتحديث حقل واحد
+            'date' => 'sometimes|date',
+            'duration' => 'sometimes|string',
+            'party_size' => 'sometimes|integer|min:1',
+            'location' => 'sometimes|string',
+            'cuisine' => 'sometimes|string',
+            'time' => 'sometimes|string',
         ]);
 
         $reservation = Reservation::findOrFail($id);
 
-        $reservation->update($validated);
+        // تحديث فقط الحقول المرسلة
+        $reservation->update(array_filter($validated));
 
-        return redirect()->route('reservations.index')->with('success', 'Reservation updated successfully!');
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Reservation updated successfully!',
+            'data' => $reservation->fresh(), // إعادة تحميل البيانات المحدثة
+        ]);
     }
 
     public function destroy(string $id)
     {
         if (!Str::isUuid($id)) {
-            abort(404);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid reservation ID',
+            ], 404);
         }
 
         $reservation = Reservation::findOrFail($id);
         $reservation->delete();
 
-        return redirect()->route('reservations.index')->with('success', 'Reservation deleted successfully!');
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Reservation deleted successfully!',
+        ]);
     }
 }

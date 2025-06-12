@@ -3,36 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Reservation extends Model
 {
-    protected $table = 'reservations';
-
+    protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
 
-  protected $fillable = [
-    'id',
-    'date',
-    'duration',
-    'party_size',
-    'location',
-    'cuisine',
-    'time',
-    'restaurant_id',
-];
+    protected $fillable = [
+        'id', 'user_id', 'restaurant_id', 'table_id', 'date', 'duration', 'party_size', 'status', 'special_requests'
+    ];
 
-
-  
-    protected static function boot()
+    public function user()
     {
-        parent::boot();
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
-        static::creating(function ($model) {
-            if (empty($model->{$model->getKeyName()})) {
-                $model->{$model->getKeyName()} = (string) Str::uuid();
-            }
-        });
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class, 'restaurant_id');
+    }
+
+    public function table()
+    {
+        return $this->belongsTo(Table::class, 'table_id');
     }
 }
