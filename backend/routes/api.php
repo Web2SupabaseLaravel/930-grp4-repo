@@ -47,6 +47,7 @@ Route::apiResource('restaurants', RestaurantController::class);
 
 Route::prefix('restaurants/{restaurant}')->group(function () {
     Route::apiResource('tables', TablesController::class);
+    Route::apiResource('tables', TableController::class);
 });
 
 
