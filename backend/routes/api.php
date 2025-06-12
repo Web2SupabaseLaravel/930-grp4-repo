@@ -9,7 +9,8 @@ use App\Http\Controllers\API\NotificationApiController;
 use App\Http\Controllers\API\CustomerControllerApi;
 use App\Http\Controllers\API\ReservationApiController;
 use App\Http\Controllers\ReportController;
-
+use App\Http\Controllers\TableController;
+use App\Http\Controllers\TableManagementController;
 
 
 
@@ -43,6 +44,7 @@ Route::apiResource('restaurants', RestaurantController::class);
 
 Route::prefix('restaurants/{restaurant}')->group(function () {
     Route::apiResource('tables', TablesController::class);
+    Route::apiResource('tables', TableController::class);
 });
 
 

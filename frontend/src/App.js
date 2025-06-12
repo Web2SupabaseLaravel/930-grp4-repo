@@ -23,6 +23,10 @@ import Register from './component/Register';
 
 // import Home from './Components/Home/Home';
 
+import TableManagement from './Components/Tables/TableManagement';
+import ReservationScheduleStaff from './Components/ReservationScheduleStaff/ReservationScheduleStaff';
+
+
 function App() {
   return (
     <>
@@ -40,6 +44,9 @@ function App() {
         <Route path="/Dashboard/reservation-management" element={<RestaurantManagement />} />
         <Route path="/Dashboard/restaurant-management" element={<ReservationManagement />} />
         <Route path='/Dashboard' element={<Dashboard/>}/>
+        <Route path="/restaurants/:id/tables" element={<TableManagement />} />
+        <Route path="/reservations-schedule" element={<ReservationScheduleStaff />} />
+
       </Routes>
       <Footer />
     </>
