@@ -9,7 +9,7 @@ function Header() {
                 <span className="navbar-brand sansita">Table AHead</span>
                 <div className="collapse navbar-collapse">
                     <ul className="navbar-nav ms-auto resbutton">
-                          <li className="nav-item me-2 mt-2">
+                        <li className="nav-item me-2 mt-2">
                             <Notifications />
                         </li>
                         <li className="nav-item">
@@ -17,6 +17,12 @@ function Header() {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/tables">Tables</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/booking">Book</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/reservation">Reserve</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/customermangemant">Customer</Link>
@@ -27,10 +33,10 @@ function Header() {
                         <li className="nav-item me-2">
                             <Link className="btn btn-dark" to="/Login">Sign</Link>
                         </li>
-                         <li className="nav-item me-2">
+                        <li className="nav-item me-2">
                             <Link className="btn btn-secondary" to="/Dashboard">DashBoard</Link>
                         </li>
-                      
+
                     </ul>
                 </div>
             </nav>

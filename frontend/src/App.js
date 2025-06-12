@@ -26,8 +26,8 @@ import Register from './component/Register';
 import ReservationScheduleStaff from './Components/ReservationScheduleStaff/ReservationScheduleStaff';
 import TableManagement from './Components/Tables/TableManagement';
 
-import Booking from './components/Booking/Booking';
-import ReservationForm from './components/Booking/ReservationForm';
+import Booking from './Components/Booking/Booking';
+import ReservationForm from './Components/Booking/ReservationForm';
 
 
 

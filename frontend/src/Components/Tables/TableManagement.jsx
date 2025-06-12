@@ -82,7 +82,7 @@ const TableManagement = () => {
       <div className="loading-container">
         <h1>My Restaurant App</h1>
         <p>Loading...</p>
-        <div className="footer">© 2023 My Restaurant App</div>
+        <div className="">© 2023 My Restaurant App</div>
       </div>
     );
   }
@@ -92,7 +92,7 @@ const TableManagement = () => {
       <div className="error-container">
         <h1>My Restaurant App</h1>
         <p>{error}</p>
-        <div className="footer">© 2023 My Restaurant App</div>
+        <div className="">© 2023 My Restaurant App</div>
       </div>
     );
   }
